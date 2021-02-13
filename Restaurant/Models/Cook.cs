@@ -24,7 +24,7 @@ namespace Restaurant.Models
             for (int i = 0; i < eggs.Length; i++)
             {
                 var egg = (Egg)eggs[i];
-                egg.Obtain();
+                egg.Obtain();                
                 try
                 {
 
@@ -37,6 +37,7 @@ namespace Restaurant.Models
                 egg.Cook();
             }
 
+            //TODO: Cook shouldn't know about customers. Only the server knows and create results for customers. Then the Process method return type can be void.
             string[] resultOfCooks = new string[table.customersCount];
             for (int i = 0; i < table.customersCount; i++)
             {

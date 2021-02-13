@@ -32,6 +32,7 @@ namespace Restaurant.Moels
             this.Quality = rand.Next(101);
         }
 
+        //TODO: Where this method should be called?
         public int GetQuality()
         {
             return this.Quality;
@@ -50,6 +51,7 @@ namespace Restaurant.Moels
             base.Cook();
         }
 
+        //TODO: Where this method should be called?
         public void DiscardShell() { }
 
         protected void Dispose(bool disposing)

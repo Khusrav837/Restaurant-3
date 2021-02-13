@@ -6,14 +6,16 @@ namespace Restaurant.Models
     public class TableRequests
     {
         private int customerIndex = 0;
-        private object[][] items = new object[8][];
+        private object[][] items = new object[8][]; //TODO: This array's type should be IMenuItem
         int j = 0;
 
+        //TODO: We don't need with customersCount
         public int customersCount
         {
             get { return customerIndex; }
         }
 
+        //TODO: 1st parameter should be customer number (int). 2nd parameter should be order (IMenuItem)
         public void Add(object order)
         {
             if (customerIndex == 8)
@@ -33,6 +35,7 @@ namespace Restaurant.Models
             }
         }
 
+        //TODO: These 2 indexer's return type should be IMenuItem[]
         public object[] this [int i]
         {
             get 
@@ -48,7 +51,7 @@ namespace Restaurant.Models
         public object[] this[Type t]
         {
             get 
-            {
+            {                
                 object[] collected = new object[customerIndex];
                 var collectedType = 0;
                 

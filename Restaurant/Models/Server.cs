@@ -26,7 +26,7 @@ namespace Restaurant.Models
             {
                 var chicken = new Chicken(chickenQuantity);
                 tableRequests.Add(chicken);
-            }
+            }//TODO: Do we weed "else" parts?
             else
             {
                 tableRequests.Add(null);
@@ -78,6 +78,7 @@ namespace Restaurant.Models
         }
     }
 
+    //TODO: In this project we should have classes for Tea, Juice, RC-Cola and CocaCola instead of enum
     public enum Drinks : short
     {
         Tea,
