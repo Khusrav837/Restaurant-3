@@ -40,7 +40,11 @@ namespace Restaurant
 
                 var drink = drinks.SelectedItem;
 
-                Server.Receive(quantityChicken, quantityEgg, drink);
+               var egg = Server.Receive(quantityChicken, quantityEgg, drink);
+               if (egg != null)
+                {
+                    eggQuality.Content = $"Egg Quality: {egg.GetQuality()}";
+                }
             }
             catch(Exception ex)
             {

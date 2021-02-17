@@ -26,10 +26,11 @@ namespace Restaurant.Moels
         }
 
 
-        public Egg(int quantity) : base(quantity)
+        public Egg(int quantity) 
         {
             Random rand = new Random();
             this.Quality = rand.Next(101);
+            this.Quantity = quantity;
         }
 
         //TODO: Where this method should be called?
@@ -46,12 +47,8 @@ namespace Restaurant.Moels
             }
         }
 
-        public override void Cook()
-        {
-            base.Cook();
-        }
-
-        //TODO: Where this method should be called?
+        //TODO: Where this method should be called? 
+        // I didn't see about this method in Presintation but I call it in Cook
         public void DiscardShell() { }
 
         protected void Dispose(bool disposing)
@@ -72,6 +69,12 @@ namespace Restaurant.Moels
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public override void Cook() {}
+
+        public override void Obtain() {}
+
+        public override void Serve() {}
 
         ~Egg()
         {

@@ -13,6 +13,7 @@ namespace Restaurant.Models
         private TableRequests tableRequests;
         Boolean sendedToCook = false;
         Boolean served = false;
+        private int customerIndex = 0;
 
         public Server()
         {
@@ -20,37 +21,55 @@ namespace Restaurant.Models
             tableRequests = new TableRequests();
         }
 
-        public void Receive(int chickenQuantity, int eggQuantity, object drink)
+        public Egg Receive(int chickenQuantity, int eggQuantity, object drink)
         {
+            if (customerIndex == 8)
+            {
+                throw new Exception("All customers already gave order!");
+            }
+            IMenuItem chickenMenuItem = null;
             if (chickenQuantity > 0)
             {
-                var chicken = new Chicken(chickenQuantity);
-                tableRequests.Add(chicken);
+                chickenMenuItem = new Chicken(chickenQuantity);
+                
             }//TODO: Do we weed "else" parts?
-            else
-            {
-                tableRequests.Add(null);
-            }
-            
+            tableRequests.Add(customerIndex, chickenMenuItem);
+
+            IMenuItem eggMenuItem = null;
             if (eggQuantity > 0)
             {
-                var egg = new Egg(eggQuantity);
-                tableRequests.Add(egg);
+                eggMenuItem = new Egg(eggQuantity);
             }
-            else
-            {
-                tableRequests.Add(null);
-            }
+            tableRequests.Add(customerIndex, eggMenuItem);
 
+            IMenuItem drinkMenuItem = null;
             if (drink is Drinks)
             {
-                var egg = new Drink() { drink = (Drinks)drink };
-                tableRequests.Add(egg);
+                var d = (Drinks)drink;
+                if (d == Drinks.Coca_Cola)
+                {
+                    drinkMenuItem = new Coca_Cola();
+                } 
+                else if (d == Drinks.Juice)
+                {
+                    drinkMenuItem = new Juice();
+                } 
+                else if (d == Drinks.RC_Cola)
+                {
+                    drinkMenuItem = new RC_Cola();
+                }
+                else if (d == Drinks.Tea)
+                {
+                    drinkMenuItem = new Tea();
+                }
             }
-            else
+            tableRequests.Add(customerIndex, drinkMenuItem);
+            customerIndex++;
+            if (eggMenuItem is Egg)
             {
-                tableRequests.Add(null);
+                return (Egg)eggMenuItem;
             }
+            return null;
         }
 
         public void SendToCook()
@@ -60,7 +79,47 @@ namespace Restaurant.Models
                 throw new Exception("already cooked!");
             }
             sendedToCook = true;
-            resultOfCooks = cook.Process(tableRequests);
+            cook.Process(tableRequests);
+            resultOfCooks = new string[customerIndex];
+            for (int i = 0; i < customerIndex; i++)
+            {
+                var orders = tableRequests[i + 1];
+                var ch = 0;
+                var e = 0;
+                Type t = null;
+                if (orders == null)
+                {
+                    continue;
+                }
+                for (int j = 0; j < orders.Length; j++)
+                {
+                    if (orders[j] is Chicken)
+                    {
+                        var order = (Chicken)orders[0];
+                        ch = order.GetQuantity();
+                    } 
+                    else if (orders[j] is Egg)
+                    {
+                        var order = (Egg)orders[1];
+                        e = order.GetQuantity();
+                    } 
+                    else if (orders[j] is IMenuItem)
+                    {
+                        t = orders[j].GetType();
+                    }
+                }
+
+                resultOfCooks[i] = $"Customer {i} is served {ch} chicken, {e} egg, ";
+
+                if (t != null)
+                {
+                    resultOfCooks[i] += $"{t}";
+                }
+                else
+                {
+                    resultOfCooks[i] += "no drinks";
+                }
+            }
         }
 
         public string[] Serve()
@@ -79,7 +138,7 @@ namespace Restaurant.Models
     }
 
     //TODO: In this project we should have classes for Tea, Juice, RC-Cola and CocaCola instead of enum
-    public enum Drinks : short
+  public enum Drinks : short
     {
         Tea,
         Juice,
