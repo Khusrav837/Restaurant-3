@@ -51,3 +51,11 @@ C:\GitHub projects\Khusrav837\Restaurant-3\Restaurant\obj\Debug\MainWindow.g.cs
 C:\GitHub projects\Khusrav837\Restaurant-3\Restaurant\obj\Debug\App.g.cs
 C:\GitHub projects\Khusrav837\Restaurant-3\Restaurant\obj\Debug\Restaurant_MarkupCompile.cache
 C:\GitHub projects\Khusrav837\Restaurant-3\Restaurant\obj\Debug\Restaurant_MarkupCompile.lref
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\bin\Debug\Restaurant.exe.config
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\obj\Debug\Restaurant.exe
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\obj\Debug\Restaurant.pdb
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\obj\Debug\Restaurant.csprojResolveAssemblyReference.cache
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\obj\Debug\MainWindow.g.cs
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\obj\Debug\App.g.cs
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\obj\Debug\Restaurant_MarkupCompile.cache
+C:\GitHub projects\Restaurant\Restaurant-3\Restaurant\obj\Debug\Restaurant_MarkupCompile.lref

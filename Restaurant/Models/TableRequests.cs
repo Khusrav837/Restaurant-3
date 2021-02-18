@@ -5,10 +5,9 @@ namespace Restaurant.Models
 {
     public class TableRequests
     {
-        private IMenuItem[][] items = new IMenuItem[8][]; //TODO: This array's type should be IMenuItem
+        private IMenuItem[][] items = new IMenuItem[8][];
         int j = 0;
-
-        //TODO: 1st parameter should be customer number (int). 2nd parameter should be order (IMenuItem)
+        
         public void Add(int customerIndex, IMenuItem order)
         {
             if (j == 0)
@@ -22,8 +21,7 @@ namespace Restaurant.Models
                 j = 0;
             }
         }
-
-        //TODO: These 2 indexer's return type should be IMenuItem[]
+        
         public IMenuItem[] this [int i]
         {
             get 

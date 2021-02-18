@@ -1,7 +1,6 @@
 ﻿
 namespace Restaurant.Models
-{
-    //TODO: Food class should be abstract class, because we don't need instance of this class. Cook, Obtain and Serve methods should be abstract.
+{    
     public abstract class Food : IMenuItem
     {
 

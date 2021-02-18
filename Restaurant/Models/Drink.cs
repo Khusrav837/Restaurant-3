@@ -1,36 +1,36 @@
 ﻿
+using System;
+
 namespace Restaurant.Models
 {
-    //TODO: Drink class will be abstract class. Obtain and Serve methods should be abstract.
-    public class Tea : IMenuItem
+    //Slide #10 shown the class Hierarchy. There you can see that the Drink class should be base class for Tea, Pepsi,...casses.
+    public abstract class Drink : IMenuItem
     {
-
-        public void Obtain() {}
-
-        public void Serve() {}
+        abstract public void Obtain();
+        abstract public void Serve();
     }
 
-    public class Juice : IMenuItem
+    public class Tea : Drink
     {
-
-        public void Obtain() { }
-
-        public void Serve() { }
+        public override void Obtain() {}
+        public override void Serve() {}
     }
 
-    public class RC_Cola : IMenuItem
+    public class Juice : Drink
     {
-
-        public void Obtain() { }
-
-        public void Serve() { }
+        public override void Obtain() { }
+        public override void Serve() { }
     }
 
-    public class Coca_Cola : IMenuItem
+    public class RC_Cola : Drink
     {
+        public override void Obtain() { }
+        public override void Serve() { }
+    }
 
-        public void Obtain() { }
-
-        public void Serve() { }
+    public class Coca_Cola : Drink
+    {
+        public override void Obtain() { }
+        public override void Serve() { }
     }
 }

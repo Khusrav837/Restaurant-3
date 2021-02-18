@@ -5,7 +5,7 @@ using System;
 
 namespace Restaurant.Models
 {
-    
+
     public class Server
     {
         private Cook cook;
@@ -21,6 +21,7 @@ namespace Restaurant.Models
             tableRequests = new TableRequests();
         }
 
+        //TODO: It's not good solution if this method's return type is Egg. It should be void (or maybe bool). 
         public Egg Receive(int chickenQuantity, int eggQuantity, object drink)
         {
             if (customerIndex == 8)
@@ -31,8 +32,7 @@ namespace Restaurant.Models
             if (chickenQuantity > 0)
             {
                 chickenMenuItem = new Chicken(chickenQuantity);
-                
-            }//TODO: Do we weed "else" parts?
+            }
             tableRequests.Add(customerIndex, chickenMenuItem);
 
             IMenuItem eggMenuItem = null;
@@ -49,11 +49,11 @@ namespace Restaurant.Models
                 if (d == Drinks.Coca_Cola)
                 {
                     drinkMenuItem = new Coca_Cola();
-                } 
+                }
                 else if (d == Drinks.Juice)
                 {
                     drinkMenuItem = new Juice();
-                } 
+                }
                 else if (d == Drinks.RC_Cola)
                 {
                     drinkMenuItem = new RC_Cola();
@@ -97,12 +97,12 @@ namespace Restaurant.Models
                     {
                         var order = (Chicken)orders[0];
                         ch = order.GetQuantity();
-                    } 
+                    }
                     else if (orders[j] is Egg)
                     {
                         var order = (Egg)orders[1];
                         e = order.GetQuantity();
-                    } 
+                    }
                     else if (orders[j] is IMenuItem)
                     {
                         t = orders[j].GetType();
@@ -137,8 +137,7 @@ namespace Restaurant.Models
         }
     }
 
-    //TODO: In this project we should have classes for Tea, Juice, RC-Cola and CocaCola instead of enum
-  public enum Drinks : short
+    public enum Drinks : short
     {
         Tea,
         Juice,

@@ -32,8 +32,7 @@ namespace Restaurant.Moels
             this.Quality = rand.Next(101);
             this.Quantity = quantity;
         }
-
-        //TODO: Where this method should be called?
+        
         public int GetQuality()
         {
             return this.Quality;
@@ -46,16 +45,16 @@ namespace Restaurant.Moels
                 throw new Exception("Quality is less!");
             }
         }
-
-        //TODO: Where this method should be called? 
-        // I didn't see about this method in Presintation but I call it in Cook
+        
+        //This method should be called in the Dispose() method, in this Egg class.
         public void DiscardShell() { }
 
         protected void Dispose(bool disposing)
         {
             if(!this.IsDisposed)
             {
-                if(disposing)
+                this.DiscardShell();
+                if (disposing)
                 {
                     Console.WriteLine("Cleaning!");
                 }

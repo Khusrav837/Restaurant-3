@@ -23,23 +23,19 @@ namespace Restaurant.Models
             var eggs = table[typeof(Egg)];
             for (int i = 0; i < eggs.Length; i++)
             {
-                var egg = (Egg)eggs[i];
-                egg.Obtain();                
-                try
+                using (var egg = (Egg)eggs[i])
                 {
-
-                    egg.Crack();
-                }
-                catch
-                {
-
-                }
-                egg.Cook();
-                egg.DiscardShell();
-            }
-
-            //TODO: Cook shouldn't know about customers. Only the server knows and create results for customers. Then the Process method return type can be void.
-            
+                    egg.Obtain();
+                    try
+                    {
+                        egg.Crack();
+                    }
+                    catch
+                    {
+                    }
+                    egg.Cook();
+                }                
+            }            
         }
     }
 }
